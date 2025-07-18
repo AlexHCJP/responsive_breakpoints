@@ -1,5 +1,5 @@
 name: responsive_breakpoints
-description: "A new Flutter project."
+description: "A Flutter package that helps you build responsive layouts by defining and working with custom breakpoint enums."
 version: 0.0.1
 homepage: https://www.contributors.info/docs/responsive_breakpoints/getting-started
 
@@ -8,9 +8,11 @@ repository: https://github.com/AlexHCJP/responsive_breakpoints
 issue_tracker: https://github.com/AlexHCJP/responsive_breakpoints/issues
 
 topics:
-  - form
-  - validation
-  - fields
+  - responsive
+  - layout
+  - breakpoints
+  - design
+  - utility
 
 funding:
   - https://www.patreon.com/c/Contributors
