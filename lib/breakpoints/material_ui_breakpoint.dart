@@ -1,4 +1,4 @@
-import 'package:mediarequest/mediarequest.dart';
+import 'package:responsive_breakpoints/responsive_breakpoints.dart';
 
 /// Defines breakpoints based on the Material 3 layout system.
 ///

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mediarequest/mediarequest.dart';
+import 'package:responsive_breakpoints/responsive_breakpoints.dart';
 
 enum LayoutBreakpoint implements BreakpointSpec {
   s(breakpoint: 0),
@@ -25,12 +25,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         extensions: [
-          ResponsiveBreakpointTheme(
-            breakpoints: LayoutBreakpoint.values,
-          ),
-          ResponsiveBreakpointTheme(
-            breakpoints: BootstrapBreakpoint.values,
-          ),
+          ResponsiveBreakpointTheme(breakpoints: LayoutBreakpoint.values),
+          ResponsiveBreakpointTheme(breakpoints: BootstrapBreakpoint.values),
         ],
       ),
       home: Scaffold(body: Center(child: Content())),
@@ -48,31 +44,42 @@ class Content extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(MediaQuery.of(context).size.width.toString()),
-        Text.rich(TextSpan(children: [
-          TextSpan(text: 'Custom breakpoints: '),
-          TextSpan(text: switch (ResponsiveBreakpointTheme.of<LayoutBreakpoint>(context)) {
-            LayoutBreakpoint.s => '< 600px',
-            LayoutBreakpoint.sm => '≥ 600px',
-            LayoutBreakpoint.md => '≥ 1200px',
-            LayoutBreakpoint.lg => '≥ 1400px',
-          })
-        ])),
         Text.rich(
-          TextSpan(children: [
-            const TextSpan(text: 'Bootstrap breakpoints: '),
-            TextSpan(
-              text: switch (ResponsiveBreakpointTheme.of<BootstrapBreakpoint>(context)) {
-                BootstrapBreakpoint.xs => '<576px',
-                BootstrapBreakpoint.sm => '≥576px',
-                BootstrapBreakpoint.md => '≥768px',
-                BootstrapBreakpoint.lg => '≥992px',
-                BootstrapBreakpoint.xl => '≥1200px',
-                BootstrapBreakpoint.xxl => '≥1400px',
-              },
-            ),
-          ]),
+          TextSpan(
+            children: [
+              TextSpan(text: 'Custom breakpoints: '),
+              TextSpan(
+                text: switch (ResponsiveBreakpointTheme.of<LayoutBreakpoint>(
+                  context,
+                )) {
+                  LayoutBreakpoint.s => '< 600px',
+                  LayoutBreakpoint.sm => '≥ 600px',
+                  LayoutBreakpoint.md => '≥ 1200px',
+                  LayoutBreakpoint.lg => '≥ 1400px',
+                },
+              ),
+            ],
+          ),
         ),
-
+        Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(text: 'Bootstrap breakpoints: '),
+              TextSpan(
+                text: switch (ResponsiveBreakpointTheme.of<BootstrapBreakpoint>(
+                  context,
+                )) {
+                  BootstrapBreakpoint.xs => '<576px',
+                  BootstrapBreakpoint.sm => '≥576px',
+                  BootstrapBreakpoint.md => '≥768px',
+                  BootstrapBreakpoint.lg => '≥992px',
+                  BootstrapBreakpoint.xl => '≥1200px',
+                  BootstrapBreakpoint.xxl => '≥1400px',
+                },
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

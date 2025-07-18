@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:mediarequest/breakpoint_spec.dart';
-import 'package:mediarequest/mediarequest.dart';
+import 'package:responsive_breakpoints/breakpoint_spec.dart';
+import 'package:responsive_breakpoints/responsive_breakpoints.dart';
 
 /// A theme extension that allows customizing and resolving breakpoints
 /// based on screen width, using [MediaQuery].
@@ -10,7 +10,6 @@ import 'package:mediarequest/mediarequest.dart';
 /// (e.g. for screen width breakpoints like sm, md, lg).
 class ResponsiveBreakpointTheme<T extends BreakpointSpec>
     extends ThemeExtension<ResponsiveBreakpointTheme<T>> {
-
   /// Creates a [ResponsiveBreakpointTheme] with a required list of breakpoints.
   const ResponsiveBreakpointTheme({required this.breakpoints});
 
@@ -48,26 +47,27 @@ class ResponsiveBreakpointTheme<T extends BreakpointSpec>
   static T of<T extends BreakpointSpec>(BuildContext context) {
     final theme = Theme.of(context).extension<ResponsiveBreakpointTheme<T>>();
     assert(
-    theme != null,
-    'ResponsiveBreakpointTheme<$T> is not added to ThemeData.extensions',
+      theme != null,
+      'ResponsiveBreakpointTheme<$T> is not added to ThemeData.extensions',
     );
     return theme!.resolveBreakpoint(context);
   }
 
   /// Creates a copy of the theme with optionally updated breakpoints.
   @override
-  ResponsiveBreakpointTheme<T> copyWith({List<T>? breakpoints}) => ResponsiveBreakpointTheme<T>(
-      breakpoints: breakpoints ?? this.breakpoints,
-    );
+  ResponsiveBreakpointTheme<T> copyWith({List<T>? breakpoints}) =>
+      ResponsiveBreakpointTheme<T>(
+        breakpoints: breakpoints ?? this.breakpoints,
+      );
 
   /// Defines how to interpolate between two [ResponsiveBreakpointTheme]s.
   ///
   /// Returns `this` if `t < 0.5`, otherwise `other`.
   @override
   ResponsiveBreakpointTheme<T> lerp(
-      covariant ResponsiveBreakpointTheme<T>? other,
-      double t,
-      ) {
+    covariant ResponsiveBreakpointTheme<T>? other,
+    double t,
+  ) {
     if (other == null) return this;
     return t < 0.5 ? this : other;
   }

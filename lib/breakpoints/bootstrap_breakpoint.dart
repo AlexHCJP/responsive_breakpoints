@@ -1,4 +1,4 @@
-import 'package:mediarequest/mediarequest.dart';
+import 'package:responsive_breakpoints/responsive_breakpoints.dart';
 
 /// Defines breakpoints based on the Bootstrap 5 responsive layout system.
 ///

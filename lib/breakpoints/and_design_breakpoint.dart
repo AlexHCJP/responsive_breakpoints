@@ -1,5 +1,5 @@
-import 'package:mediarequest/breakpoint_spec.dart';
-import 'package:mediarequest/mediarequest.dart';
+import 'package:responsive_breakpoints/breakpoint_spec.dart';
+import 'package:responsive_breakpoints/responsive_breakpoints.dart';
 
 /// Defines responsive layout breakpoints following the Ant Design system.
 ///
