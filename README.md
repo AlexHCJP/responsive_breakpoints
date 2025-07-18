@@ -1,39 +1,86 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+# 📱 responsive_breakpoints
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+A Flutter package that helps you build responsive layouts using enums to represent breakpoints like `sm`, `md`, `lg`, and more.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+---
 
-## Features
+## ✨ Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Define custom breakpoint enums
+- Access breakpoints using context
+- Easily adapt UI to screen width
+- Type-safe and declarative design
 
-## Getting started
+---
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## 🚀 Getting Started
 
-## Usage
+Add the dependency in your `pubspec.yaml`:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+```yaml
+dependencies:
+  responsive_breakpoints: ^0.0.1
+````
 
-```dart
-const like = 'sample';
+Then run:
+
+```bash
+flutter pub get
 ```
 
-## Additional information
+---
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## 🧩 Usage
+
+### 1. Define your enum
+
+```dart
+enum LayoutBreakpoint implements BreakpointSpec {
+  sm(breakpoint: 600),
+  md(breakpoint: 1024),
+  lg(breakpoint: 1440);
+
+  const LayoutBreakpoint({required this.breakpoint});
+  @override
+  final double breakpoint;
+}
+```
+
+### 2. Wrap your app (usually near `MaterialApp`)
+
+```dart
+ResponsiveBreakpointTheme(
+  data: ResponsiveBreakpointData(breakpoints: LayoutBreakpoint.values),
+  child: MaterialApp(...),
+)
+```
+
+### 3. Use it anywhere in the widget tree
+
+```dart
+final breakpoint = ResponsiveBreakpointTheme.of<LayoutBreakpoint>(context);
+
+switch (breakpoint) {
+  case LayoutBreakpoint.sm:
+    return SmallLayout();
+  case LayoutBreakpoint.md:
+    return MediumLayout();
+  case LayoutBreakpoint.lg:
+    return LargeLayout();
+}
+```
+
+---
+
+
+## 🔗 Links
+
+* [Repository](https://github.com/AlexHCJP/responsive_breakpoints)
+* [Issues](https://github.com/AlexHCJP/responsive_breakpoints/issues)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
