@@ -26,6 +26,9 @@ import 'package:responsive_breakpoints/responsive_breakpoints.dart';
 /// }
 /// ```
 enum TailwindBreakpoint implements BreakpointSpec {
+  /// Small screen: <640px
+  xs(breakpoint: 0),
+
   /// Small screen: ≥640px
   sm(breakpoint: 640),
 
