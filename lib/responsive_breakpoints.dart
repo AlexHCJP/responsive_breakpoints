@@ -1,4 +1,5 @@
 export 'breakpoint_spec.dart';
+
 /// Breakpoints
 export 'breakpoints/and_design_breakpoint.dart';
 export 'breakpoints/bootstrap_breakpoint.dart';
